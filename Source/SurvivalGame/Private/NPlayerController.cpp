@@ -23,7 +23,7 @@ void ANPlayerController::TogglePauseMenu()
         PauseMenuInstance->RemoveFromViewport();
         PauseMenuInstance = nullptr;
 
-        bShowMouseCursor = false;
+        bShowMouseCursor = true;
         SetInputMode(FInputModeGameOnly());
         return;
     }
@@ -75,7 +75,7 @@ void ANPlayerController::SetupInputComponent()
         EnhancedInputComponent->BindAction(WeaponShootAction, ETriggerEvent::Triggered, this, &ANPlayerController::Shoot);
 
         // In-Game Menu
-        EnhancedInputComponent->BindAction(OpenInGameMenuAction, ETriggerEvent::Triggered, this, &ANPlayerController::TogglePauseMenu);
+        EnhancedInputComponent->BindAction(OpenInGameMenuAction, ETriggerEvent::Completed, this, &ANPlayerController::TogglePauseMenu);
     }
 }
 
